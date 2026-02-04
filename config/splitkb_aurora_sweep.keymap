@@ -17,8 +17,8 @@
 
 // Helper Constants
 #define MEH(kc) &hl LC(LS(LALT)) kc
-#define ATL(kc) &hl LALT kc
-#define GUI(kc) &hl LGUI kc
+#define LT_ALT(kc) &hl LALT kc
+#define LT_GUI(kc) &hl LGUI kc
 #define SCREEN &kp LG(LS(N4))
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
@@ -216,13 +216,13 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W(Esc/MEDIA)F      │  P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
-            &kp Q      &kp W      &kp F      &kp P      GUI(B)      GUI(J)     &kp L      &kp U      &kp Y      &kp BSPC
+            &kp Q      &kp W      &kp F      &kp P      LT_GUI(B)   LT_GUI(J)  &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G (MEH) ││  M (MEH) │  N       │  E       │  I       │  O       │
             &kp A      &kp R      &kp S      &kp T      MEH(G)      MEH(M)     &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X (NUM/Tab) C      │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      ALT(V)      ALT(K)      &kp H      &kp COMMA  &kp DOT   &kp ENTER
+            &kp Z      &kp X      &kp C      &kp D      LT_ALT(V)   LT_ALT(K)  &kp H      &kp COMMA  &kp DOT   &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
                                              &mo LOWER  &sk LCTRL  &skq LSHIFT SPC_RAISE
@@ -234,13 +234,13 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W    (Esc) F  (MEDIA) P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
-            &kp Q      &kp W      &kp F      &kp P      GUI(B)      GUI(J)     &kp L      &kp U      &kp Y      &kp BSPC
+            &kp Q      &kp W      &kp F      &kp P      LT_GUI(B)   LT_GUI(J)  &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G (GUI) ││  M (GUI) │  N       │  E       │  I       │  O       │
             &kp A      &kp R      &kp S      &kp T     &mt GUI G   &mt GUI M   &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X    (NUM) C       │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      ALT(V)      ALT(K)     &kp H      &kp COMMA  &kp DOT    &kp ENTER
+            &kp Z      &kp X      &kp C      &kp D      LT_ALT(V)   LT_ALT(K)  &kp H      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
                                              &mo LOWER  &sk LCTRL  &sk LSHIFT  SPC_RAISE
