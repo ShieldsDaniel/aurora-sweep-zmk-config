@@ -17,6 +17,8 @@
 
 // Helper Constants
 #define MEH(kc) &hl LC(LS(LALT)) kc
+#define ATL(kc) &hl LALT kc
+#define GUI(kc) &hl LGUI kc
 #define SCREEN &kp LG(LS(N4))
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
@@ -119,62 +121,72 @@
         compatible = "zmk,combos";
         combo_mac {
             timeout-ms = <50>;
+            // p + b  +  j + l
             key-positions = <3 4 5 6>;
-            layers = <1>;
+            layers = <LINUX>;
             bindings = <&to MAC>;
         };
         combo_linux {
             timeout-ms = <50>;
+            // p + b  +  j + l
             key-positions = <3 4 5 6>;
-            layers = <0>;
+            layers = <MAC>;
             bindings = <&to LINUX>;
         };
         combo_mac_shortcuts {
             timeout-ms = <50>;
+            // , + .
             key-positions = <27 28>;
-            layers = <0>;
+            layers = <MAC>;
             bindings = <&sk LGUI>;
         };
         combo_linux_shortcuts {
             timeout-ms = <50>;
+            // , + .
             key-positions = <27 28>;
-            layers = <1>;
+            layers = <LINUX>;
             bindings = <&sk LCTRL>;
         };
         combo_check_mac {
             timeout-ms = <50>;
+            // t + g  +  m + n
             key-positions = <13 14 15 16>;
-            layers = <0>;
+            layers = <MAC>;
             bindings = <&check_mac>;
         };
         combo_check_linux {
             timeout-ms = <50>;
+            // t + g  +  m + n
             key-positions = <13 14 15 16>;
-            layers = <1>;
+            layers = <LINUX>;
             bindings = <&check_linux>;
         };
-        combo_num {
+        combo_num_tab {
             timeout-ms = <50>;
+            // x + c
             key-positions = <21 22>;
-            layers = <0>;
-            bindings = <&mo NUM>;
+            layers = <MAC LINUX>;
+            bindings = <&lt NUM TAB>;
         };
-        combo_media {
+        combo_media_esc {
             timeout-ms = <50>;
+            // w + f
             key-positions = <1 2>;
-            layers = <0>;
-            bindings = <&mo MEDIA>;
+            layers = <MAC LINUX>;
+            bindings = <&lt MEDIA ESC>;
         };
         combo_func {
             timeout-ms = <50>;
+            // u + y
             key-positions = <7 8>;
-            layers = <0>;
+            layers = <MAC LINUX>;
             bindings = <&mo FUNC>;
         };
         combo_reset {
             timeout-ms = <50>;
+            // r + s + t  +  n + e + i
             key-positions = <11 12 13 16 17 18>;
-            layers = <0>;
+            layers = <MAC LINUX>;
             bindings = <&to RESET>;
         };
     };
@@ -188,6 +200,14 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKY_KEY_QUICK_RELEASE";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+        };
     };
 
     keymap {
@@ -195,17 +215,17 @@
         default_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W  (MEDIA) F       │  P       │  B       ││  J       │  L       │  U   (FUNC) Y       │          │
-            &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
+        //│  Q       │  W(Esc/MEDIA)F      │  P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
+            &kp Q      &kp W      &kp F      &kp P      GUI(B)      GUI(J)     &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G  (MEH)││  M  (MEH)│  N       │  E       │  I       │  O       │
+        //│  A       │  R       │  S       │  T       │  G (MEH) ││  M (MEH) │  N       │  E       │  I       │  O       │
             &kp A      &kp R      &kp S      &kp T      MEH(G)      MEH(M)     &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X    (NUM) C       │  D       │  V       ││  K       │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT    &kp ENTER
+        //│  Z       │  X (NUM/Tab) C      │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
+            &kp Z      &kp X      &kp C      &kp D      ALT(V)      ALT(K)      &kp H      &kp COMMA  &kp DOT   &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
-                                             &mo LOWER  &sk LCTRL  &sk LSHIFT  SPC_RAISE
+                                             &mo LOWER  &sk LCTRL  &skq LSHIFT SPC_RAISE
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
@@ -213,14 +233,14 @@
         linux_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W  (MEDIA) F       │  P       │  B       ││  J       │  L       │  U   (FUNC) Y       │          │
-            &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
+        //│  Q       │  W    (Esc) F  (MEDIA) P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
+            &kp Q      &kp W      &kp F      &kp P      GUI(B)      GUI(J)     &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G  (GUI)││  M  (GUI)│  N       │  E       │  I       │  O       │
+        //│  A       │  R       │  S       │  T       │  G (GUI) ││  M (GUI) │  N       │  E       │  I       │  O       │
             &kp A      &kp R      &kp S      &kp T     &mt GUI G   &mt GUI M   &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X    (NUM) C       │  D       │  V       ││  K       │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT    &kp ENTER
+        //│  Z       │  X    (NUM) C       │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
+            &kp Z      &kp X      &kp C      &kp D      ALT(V)      ALT(K)     &kp H      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
                                              &mo LOWER  &sk LCTRL  &sk LSHIFT  SPC_RAISE
@@ -231,17 +251,17 @@
         lower_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  ESCAPE  │          │          │  Umlaut  │  ß       ││          │  ===     │          │  "       │  DELETE  │
-            &kp ESC    &none      &none      &kp LA(U)  &kp LA(S)   &none     &js_equals  &none      &kp DQT    &kp DEL 
+        //│          │          │          │  Umlaut  │  ß       ││          │  ===     │          │  "       │ BACKSPACE│
+            &none      &none      &none      &kp LA(U)  &kp LA(S)   &none     &js_equals  &none      &kp DQT    &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  ?       │  ~       │  _       │  - (NUM) │  \       ││  /       │  =       │  +       │  '       │  :       │
             &kp QMARK  &kp TILDE &kp UNDER &lt NUM MINUS &kp BSLH   &kp FSLH   &kp EQUAL  &kp PLUS   &kp SQT    &kp COLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  TAB     │          │          │          │          ││  ->      │  =>      │  ~>      │  `       │          │
-            &kp TAB    &none      &none      &none      &none       &fwrd_aro  &fat_aro   &squig_aro &kp GRAVE  &none 
+        //│          │          │          │          │          ││  ->      │  =>      │  ~>      │  `       │  DELETE  │
+            &none      &none      &none      &none      &none       &fwrd_aro  &fat_aro   &squig_aro &kp GRAVE  &kp DEL 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │          │          ││          │ ADJUST   │
-                                             &none      &none       &none      &mo ADJUST
+        //                                 │          │          ││Backspace │  ADJUST  │
+                                             &none      &none       &kp BSPC   &mo ADJUST
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
@@ -249,14 +269,14 @@
         raise_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬───────────┬─────────┬──────────╮
-        //│  ESCAPE  │          │          │  €       │          ││          │          │  <|       │         │  DELETE  │
-            &kp ESC    &none      &none      EURO       &none       &none      &none      &back_pipe  &none     &kp DEL
+        //│          │          │          │  €       │          ││          │          │  <|       │         │ BACKSPACE│
+            &none      &none      &none      EURO       &none       &none      &none      &back_pipe  &none     &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┼─────────┼──────────┤
         //│  !       │  @       │  #       │  $       │  %       ││  ^       │  & (FUNC)│  |        │  *      │  ;       │
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT  &kp CARET &lt FUNC AMPS &kp PIPE   &kp STAR  &kp SEMI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┼─────────┼──────────┤
-        //│  TAB     │          │          │          │          ││          │          │  |>       │         │          │
-            &kp TAB    &none      &none      &none      &none       &none      &none      &fwrd_pipe  &none     &none 
+        //│          │          │          │          │          ││          │          │  |>       │         │  DELETE  │
+            &none      &none      &none      &none      &none       &none      &none      &fwrd_pipe  &none     &kp DEL
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┴─────────┴──────────╯
         //                                 │ ADJUST   │          ││          │          │
                                             &mo ADJUST  &none       &none      &none
@@ -267,14 +287,14 @@
         adjust_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  SHIFT   │  CTRL    │  ALT     │  GUI     │          ││  DOWN    │  LEFT    │          │          │          │
-            &sk LSHFT  &sk LCTRL  &sk LALT   &sk LGUI   &none       &kp DOWN   &kp LEFT   &none      &none      &none
+        //│          │          │          │  SHIFT   │  GUI     ││  DOWN    │  LEFT    │          │          │ BACKSPACE│
+            &none      &none      &none      &sk LSHFT  &sk LGUI    &kp DOWN   &kp LEFT   &none      &none      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  <       │  [       │  {       │  (       │  €       ││          │  )       │  }       │  ]       │  >       │
             &kp LT     &kp LBKT   &kp LBRC   &kp LPAR   EURO        &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          ││  UP      │  RIGHT   │          │          │          │
-            &none      &none      &none      &none      &none       &kp UP     &kp RIGHT  &none      &none      &none
+        //│          │          │          │  CTRL    │  ALT     ││  UP      │  RIGHT   │          │          │          │
+            &none      &none      &none      &sk LCTRL  &sk LALT    &kp UP     &kp RIGHT  &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │          │          ││          │          │
                                              &none      &none       &none      &none 
