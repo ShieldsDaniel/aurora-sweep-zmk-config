@@ -30,6 +30,15 @@
 
 / {
     macros {
+        back_aro: back_aro {
+            label = "ZM_back_arrow";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LT>
+                , <&macro_tap &kp MINUS>
+                ;
+        };
         js_equals: js_equals {
             label = "ZM_js_equal";
             compatible = "zmk,behavior-macro";
@@ -38,15 +47,6 @@
                 = <&macro_tap &kp EQUAL>
                 , <&macro_tap &kp EQUAL>
                 , <&macro_tap &kp EQUAL>
-                ;
-        };
-        back_aro: back_aro {
-            label = "ZM_back_arrow";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LT>
-                , <&macro_tap &kp MINUS>
                 ;
         };
         squig_aro: squig_aro {
@@ -121,43 +121,29 @@
         compatible = "zmk,combos";
         combo_mac {
             timeout-ms = <50>;
-            // p + b  +  j + l
-            key-positions = <3 4 5 6>;
+            // q + BSPC
+            key-positions = <0 9>;
             layers = <LINUX>;
             bindings = <&to MAC>;
         };
         combo_linux {
             timeout-ms = <50>;
-            // p + b  +  j + l
-            key-positions = <3 4 5 6>;
+            // q + BSPC
+            key-positions = <0 9>;
             layers = <MAC>;
             bindings = <&to LINUX>;
         };
-        combo_mac_shortcuts {
-            timeout-ms = <50>;
-            // , + .
-            key-positions = <27 28>;
-            layers = <MAC>;
-            bindings = <&sk LGUI>;
-        };
-        combo_linux_shortcuts {
-            timeout-ms = <50>;
-            // , + .
-            key-positions = <27 28>;
-            layers = <LINUX>;
-            bindings = <&sk LCTRL>;
-        };
         combo_check_mac {
             timeout-ms = <50>;
-            // t + g  +  m + n
-            key-positions = <13 14 15 16>;
+            // z + ENTER
+            key-positions = <20 29>;
             layers = <MAC>;
             bindings = <&check_mac>;
         };
         combo_check_linux {
             timeout-ms = <50>;
-            // t + g  +  m + n
-            key-positions = <13 14 15 16>;
+            // z + ENTER
+            key-positions = <20 29>;
             layers = <LINUX>;
             bindings = <&check_linux>;
         };
@@ -175,12 +161,26 @@
             layers = <MAC LINUX>;
             bindings = <&lt MEDIA ESC>;
         };
-        combo_func {
+        combo_func_del {
             timeout-ms = <50>;
             // u + y
             key-positions = <7 8>;
             layers = <MAC LINUX>;
-            bindings = <&mo FUNC>;
+            bindings = <&lt FUNC DEL>;
+        };
+        combo_mac_shortcuts {
+            timeout-ms = <50>;
+            // , + .
+            key-positions = <27 28>;
+            layers = <MAC>;
+            bindings = <&sk LGUI>;
+        };
+        combo_linux_shortcuts {
+            timeout-ms = <50>;
+            // , + .
+            key-positions = <27 28>;
+            layers = <LINUX>;
+            bindings = <&sk LCTRL>;
         };
         combo_reset {
             timeout-ms = <50>;
@@ -311,11 +311,11 @@
         //│          │          │          │          │          ││          │  4       │  5       │  6       │          │
             &none      &none      &none      &none      &none       &none      &kp N4     &kp N5     &kp N6     &none 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  SHIFT   │          │          │  ALT     │          ││  ,       │  1       │  2       │  3       │          │
-            &sk LSHFT  &none      &none      &sk LALT   &none       &kp COMMA  &kp N1     &kp N2     &kp N3     &none
+        //│          │          │          │          │          ││  ,       │  1       │  2       │  3       │          │
+            &none      &none      &none      &none      &none       &kp COMMA  &kp N1     &kp N2     &kp N3     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │  GUI     │  CTRL    ││  .       │  0       │
-                                             &sk LGUI   &sk LCTRL   &kp DOT    &kp N0
+        //                                 │          │          ││  .       │  0       │
+                                             &none      &none       &kp DOT    &kp N0
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
