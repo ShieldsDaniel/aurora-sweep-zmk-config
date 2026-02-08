@@ -184,28 +184,28 @@
             layers = <LINUX>;
             bindings = <&sk LCTRL>;
         };
-        combo_gui_left = {
+        combo_gui_left {
             timeout-ms = <50>;
             // p + b
             key-positions = <3 4>;
             layers = <MAC LINUX>;
             bindings = <&sk LGUI>;
         };
-        combo_gui_right = {
+        combo_gui_right {
             timeout-ms = <50>;
             // j + l
             key-positions = <5 6>;
             layers = <MAC LINUX>;
             bindings = <&sk LGUI>;
         };
-        combo_alt_left = {
+        combo_alt_left {
             timeout-ms = <50>;
             // d + v
             key-positions = <23 24>;
             layers = <MAC LINUX>;
             bindings = <&sk LALT>;
         };
-        combo_alt_right = {
+        combo_alt_right {
             timeout-ms = <50>;
             // k + h
             key-positions = <25 26>;
