@@ -7,12 +7,12 @@
 // Layers
 #define MAC      0
 #define LOWER    1
-#define RAISE    3
-#define ADJUST   4
-#define NUM      6
-#define FUNC     7
-#define MEDIA    8
-#define RESET    9
+#define RAISE    2
+#define ADJUST   3
+#define NUM      4
+#define FUNC     5
+#define MEDIA    6
+#define RESET    7
 
 // Helper Constants
 #define SCREEN &kp LG(LS(N4))
