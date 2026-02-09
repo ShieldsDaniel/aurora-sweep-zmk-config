@@ -4,8 +4,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// TODO: Remove annoyin linux stuff and just build another keymap and eventually build a keyboard just for linux
-
 // Layers
 #define MAC      0
 #define LOWER    2
@@ -190,28 +188,28 @@
             timeout-ms = <50>;
             // p + b
             key-positions = <3 4>;
-            layers = <MAC LINUX>;
+            layers = <MAC>;
             bindings = <&sk LGUI>;
         };
         combo_gui_right {
             timeout-ms = <50>;
             // j + l
             key-positions = <5 6>;
-            layers = <MAC LINUX>;
+            layers = <MAC>;
             bindings = <&sk LGUI>;
         };
         combo_alt_left {
             timeout-ms = <50>;
             // d + v
             key-positions = <23 24>;
-            layers = <MAC LINUX>;
+            layers = <MAC>;
             bindings = <&sk LALT>;
         };
         combo_alt_right {
             timeout-ms = <50>;
             // k + h
             key-positions = <25 26>;
-            layers = <MAC LINUX>;
+            layers = <MAC>;
             bindings = <&sk LALT>;
         };
         combo_reset {
@@ -247,21 +245,13 @@
         default_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-<<<<<<< HEAD
         //│  Q       │  W       │  F       │  P       │  B       ││  J       │  L       │  U       │  Y       │ BACKSPACE│
-=======
-        //│  Q       │  W(Esc/MEDIA)F      │  P    (GUI) B       ││  J    (GUI) L       │  U(Del/FUNC)Y       │ BACKSPACE│
->>>>>>> c071b297ac7d31bfb57aa2021dc134100073ddf1
             &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G       ││  M       │  N       │  E       │  I       │  O       │
             &kp A      &kp R      &kp S      &kp T      &kp G       &kp M      &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-<<<<<<< HEAD
         //│  Z       │  X       │  C       │  D       │  V       ││  K       │  H       │ ,        │  .       │  ENTER   │
-=======
-        //│  Z       │  X (NUM/Tab) C      │  D    (Alt) V       ││  K    (Alt) H       │ ,(SHORTCUTS).       │  ENTER   │
->>>>>>> c071b297ac7d31bfb57aa2021dc134100073ddf1
             &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
@@ -270,27 +260,6 @@
             >;
         };
 
-<<<<<<< HEAD
-=======
-        linux_layer {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W(Esc/MEDIA)F      │  P    (GUI) B       ││  J    (GUI) L       │  U   (FUNC) Y       │ BACKSPACE│
-            &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G (GUI) ││  M (GUI) │  N       │  E       │  I       │  O       │
-            &kp A      &kp R      &kp S      &kp T      LT_GUI(G)   LT_GUI(M)  &kp N      &kp E      &kp I      &kp O
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X (NUM/Tab) C      │  D    (Alt) V       ││  K    (Alt) H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT    &kp ENTER
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
-                                             &mo LOWER  &sk LCTRL  &sk LSHIFT  SPC_RAISE
-        //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
-            >;
-        };
-
->>>>>>> c071b297ac7d31bfb57aa2021dc134100073ddf1
         lower_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
