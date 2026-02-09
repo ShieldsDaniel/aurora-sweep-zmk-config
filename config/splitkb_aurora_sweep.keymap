@@ -6,7 +6,6 @@
 
 // Layers
 #define MAC      0
-#define LINUX    1
 #define LOWER    2
 #define RAISE    3
 #define ADJUST   4
@@ -16,9 +15,6 @@
 #define RESET    8
 
 // Helper Constants
-#define MEH(kc) &hl LC(LS(LALT)) kc
-#define LT_ALT(kc) &hl LALT kc
-#define LT_GUI(kc) &hl LGUI kc
 #define SCREEN &kp LG(LS(N4))
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
@@ -94,99 +90,105 @@
                 , <&macro_tap &kp GT>
                 ;
         };
-        check_linux: check_linux {
-            label = "ZM_check_linux";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp L>
-                , <&macro_tap &kp I>
-                , <&macro_tap &kp N>
-                , <&macro_tap &kp U>
-                , <&macro_tap &kp X>
-                ;
-        };
-        check_mac: check_mac {
-            label = "ZM_check_mac";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp M>
-                , <&macro_tap &kp A>
-                , <&macro_tap &kp C>
-                ;
-        };
     };
     combos {
         compatible = "zmk,combos";
-        combo_mac {
-            timeout-ms = <50>;
-            // q + BSPC
-            key-positions = <0 9>;
-            layers = <LINUX>;
-            bindings = <&to MAC>;
-        };
-        combo_linux {
-            timeout-ms = <50>;
-            // q + BSPC
-            key-positions = <0 9>;
-            layers = <MAC>;
-            bindings = <&to LINUX>;
-        };
-        combo_check_mac {
-            timeout-ms = <50>;
-            // z + ENTER
-            key-positions = <20 29>;
-            layers = <MAC>;
-            bindings = <&check_mac>;
-        };
-        combo_check_linux {
-            timeout-ms = <50>;
-            // z + ENTER
-            key-positions = <20 29>;
-            layers = <LINUX>;
-            bindings = <&check_linux>;
-        };
-        combo_num_tab {
+        combo_num {
             timeout-ms = <50>;
             // x + c
             key-positions = <21 22>;
-            layers = <MAC LINUX>;
-            bindings = <&lt NUM TAB>;
+            layers = <MAC>;
+            bindings = <&mo NUM>;
         };
-        combo_media_esc {
+        combo_del {
+            timeout-ms = <50>;
+            // x + c + d
+            key-positions = <21 22 23>;
+            layers = <MAC>;
+            bindings = <&kp DELETE>;
+        };
+        combo_esc {
             timeout-ms = <50>;
             // w + f
             key-positions = <1 2>;
-            layers = <MAC LINUX>;
-            bindings = <&lt MEDIA ESC>;
+            layers = <MAC>;
+            bindings = <&kp ESC>;
         };
-        combo_func_del {
+        combo_media {
+            timeout-ms = <50>;
+            // w + f + p
+            key-positions = <1 2 3>;
+            layers = <MAC>;
+            bindings = <&mo MEDIA>;
+        };
+        combo_func {
+            timeout-ms = <50>;
+            // l + u + y
+            key-positions = <6 7 8>;
+            layers = <MAC>;
+            bindings = <&mo FUNC>;
+        };
+        combo_tab {
             timeout-ms = <50>;
             // u + y
             key-positions = <7 8>;
-            layers = <MAC LINUX>;
-            bindings = <&lt FUNC DEL>;
+            layers = <MAC>;
+            bindings = <&kp TAB>;
         };
-        combo_mac_shortcuts {
+        combo_shortcuts {
             timeout-ms = <50>;
             // , + .
             key-positions = <27 28>;
             layers = <MAC>;
             bindings = <&sk LGUI>;
         };
-        combo_linux_shortcuts {
+        combo_right_super {
             timeout-ms = <50>;
-            // , + .
-            key-positions = <27 28>;
-            layers = <LINUX>;
-            bindings = <&sk LCTRL>;
+            // r + s + t
+            key-positions = <11 12 13>;
+            layers = <MAC>;
+            bindings = <&kp LC(LS(LALT))>;
+        };
+        combo_left_super {
+            timeout-ms = <50>;
+            // n + e + i
+            key-positions = <16 17 18>;
+            layers = <MAC>;
+            bindings = <&kp LC(LS(LALT))>;
+        };
+        combo_left_gui {
+            timeout-ms = <50>;
+            // p + b
+            key-positions = <3 4>;
+            layers = <MAC>;
+            bindings = <&kp LGUI>;
+        };
+        combo_right_gui {
+            timeout-ms = <50>;
+            // j + l
+            key-positions = <5 6>;
+            layers = <MAC>;
+            bindings = <&kp LGUI>;
+        };
+        combo_left_alt {
+            timeout-ms = <50>;
+            // d + v
+            key-positions = <23 24>;
+            layers = <MAC>;
+            bindings = <&kp LALT>;
+        };
+        combo_right_alt {
+            timeout-ms = <50>;
+            // d + v
+            key-positions = <25 26>;
+            layers = <MAC>;
+            bindings = <&kp LALT>;
         };
         combo_reset {
             timeout-ms = <50>;
-            // r + s + t  +  n + e + i
-            key-positions = <11 12 13 16 17 18>;
-            layers = <MAC LINUX>;
+            // q + w + f  +  u + y + BSPC
+            key-positions = <0 1 2 7 8 9>;
+            layers = <MAC>;
             bindings = <&to RESET>;
         };
     };
@@ -215,35 +217,17 @@
         default_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W(Esc/MEDIA)F      │  P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
-            &kp Q      &kp W      &kp F      &kp P      LT_GUI(B)   LT_GUI(J)  &kp L      &kp U      &kp Y      &kp BSPC
+        //│  Q       │  W       │  F       │  P       │  B       ││  J       │  L       │  U       │  Y       │ BACKSPACE│
+            &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G (MEH) ││  M (MEH) │  N       │  E       │  I       │  O       │
-            &kp A      &kp R      &kp S      &kp T      MEH(G)      MEH(M)     &kp N      &kp E      &kp I      &kp O
+        //│  A       │  R       │  S       │  T       │  G       ││  M       │  N       │  E       │  I       │  O       │
+            &kp A      &kp R      &kp S      &kp T      &kp G       &kp M      &kp N      &kp E      &kp I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X (NUM/Tab) C      │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      LT_ALT(V)   LT_ALT(K)  &kp H      &kp COMMA  &kp DOT   &kp ENTER
+        //│  Z       │  X       │  C       │  D       │  V       ││  K       │  H       │ ,        │  .       │  ENTER   │
+            &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
                                              &mo LOWER  &sk LCTRL  &skq LSHIFT SPC_RAISE
-        //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
-            >;
-        };
-
-        linux_layer {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W    (Esc) F  (MEDIA) P       │  B       ││  J       │  L       │  U   (FUNC) Y       │ BACKSPACE│
-            &kp Q      &kp W      &kp F      &kp P      LT_GUI(B)   LT_GUI(J)  &kp L      &kp U      &kp Y      &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G (GUI) ││  M (GUI) │  N       │  E       │  I       │  O       │
-            &kp A      &kp R      &kp S      &kp T     &mt GUI G   &mt GUI M   &kp N      &kp E      &kp I      &kp O
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X    (NUM) C       │  D       │  V (Alt) ││  K (Alt) │  H       │ ,(SHORTCUTS).       │  ENTER   │
-            &kp Z      &kp X      &kp C      &kp D      LT_ALT(V)   LT_ALT(K)  &kp H      &kp COMMA  &kp DOT    &kp ENTER
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
-                                             &mo LOWER  &sk LCTRL  &sk LSHIFT  SPC_RAISE
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
@@ -254,8 +238,8 @@
         //│          │          │          │  Umlaut  │  ß       ││          │  ===     │          │  "       │ BACKSPACE│
             &none      &none      &none      &kp LA(U)  &kp LA(S)   &none     &js_equals  &none      &kp DQT    &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  ?       │  ~       │  _       │  - (NUM) │  \       ││  /       │  =       │  +       │  '       │  :       │
-            &kp QMARK  &kp TILDE &kp UNDER &lt NUM MINUS &kp BSLH   &kp FSLH   &kp EQUAL  &kp PLUS   &kp SQT    &kp COLON
+        //│  ?       │  ~       │  _       │  -       │  \       ││  /       │  =       │  +       │  '       │  :       │
+            &kp QMARK  &kp TILDE  &kp UNDER  &kpMINUS   &kp BSLH    &kp FSLH   &kp EQUAL  &kp PLUS   &kp SQT    &kp COLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          ││  ->      │  =>      │  ~>      │  `       │  DELETE  │
             &none      &none      &none      &none      &none       &fwrd_aro  &fat_aro   &squig_aro &kp GRAVE  &kp DEL 
@@ -272,8 +256,8 @@
         //│          │          │          │  €       │          ││          │          │  <|       │         │ BACKSPACE│
             &none      &none      &none      EURO       &none       &none      &none      &back_pipe  &none     &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┼─────────┼──────────┤
-        //│  !       │  @       │  #       │  $       │  %       ││  ^       │  & (FUNC)│  |        │  *      │  ;       │
-            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT  &kp CARET &lt FUNC AMPS &kp PIPE   &kp STAR  &kp SEMI
+        //│  !       │  @       │  #       │  $       │  %       ││  ^       │  &       │  |        │  *      │  ;       │
+            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT   &kp CARET  &kp AMPS   &kp PIPE    &kp STAR  &kp SEMI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┼─────────┼──────────┤
         //│          │          │          │          │          ││          │          │  |>       │         │  DELETE  │
             &none      &none      &none      &none      &none       &none      &none      &fwrd_pipe  &none     &kp DEL
@@ -290,8 +274,8 @@
         //│          │          │          │  SHIFT   │  GUI     ││  DOWN    │  LEFT    │          │          │ BACKSPACE│
             &none      &none      &none      &sk LSHFT  &sk LGUI    &kp DOWN   &kp LEFT   &none      &none      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  <       │  [       │  {       │  (       │  €       ││          │  )       │  }       │  ]       │  >       │
-            &kp LT     &kp LBKT   &kp LBRC   &kp LPAR   EURO        &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
+        //│  <       │  [       │  {       │  (       │          ││          │  )       │  }       │  ]       │  >       │
+            &kp LT     &kp LBKT   &kp LBRC   &kp LPAR   &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │  CTRL    │  ALT     ││  UP      │  RIGHT   │          │          │          │
             &none      &none      &none      &sk LCTRL  &sk LALT    &kp UP     &kp RIGHT  &none      &none      &none
