@@ -153,7 +153,7 @@
         //│          │          │          │          │          ││  ->      │  =>      │          │  `       │          │
             &none      &none      &none      &none      &none       &fwrd_aro  &fat_aro   &none      &kp GRAVE  &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │          │          ││BACKSPACE │  ADJUST  │
+        //                                 │    XXXXXXXXXXXX     ││BACKSPACE │  ADJUST  │
                                              &none      &none       &kp BSPC   &mo ADJUST
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
@@ -171,7 +171,7 @@
         //│          │          │          │          │          ││          │          │           │         │          │
             &none      &none      &none      &none      &none       &none      &none      &none       &none     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼───────────┴─────────┴──────────╯
-        //                                 │ ADJUST   │  ENTER   ││          │          │
+        //                                 │ ADJUST   │  ENTER   ││    XXXXXXXXXXXX     │
                                             &mo ADJUST  &kp ENTER   &none      &none
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
@@ -189,7 +189,7 @@
         //│          │          │          │          │          ││  UP      │  RIGHT   │          │          │          │
             &none      &none      &none      &none      &none       &kp UP     &kp RIGHT  &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │          │          ││          │          │
+        //                                 │    XXXXXXXXXXXX     ││    XXXXXXXXXXXX     │
                                              &none      &none       &none      &none 
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
@@ -216,7 +216,7 @@
         function_layer {
             bindings = < 
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │  F7      │  F8      │  F9      │  F10     ││          │          │          │          │          │ 
+        //│          │  F7      │  F8      │  F9      │  F10     ││          │      XXXXXXXXXXXXXXXXXX        │          │ 
             &none      &kp F7     &kp F8     &kp F9     &kp F10     &none      &none      &none      &none      &none 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │  F4      │  F5      │  F6      │  F11     ││          │          │          │          │          │ 
@@ -234,11 +234,11 @@
         media_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          ││  Screen  │  Louder  │          │          │ Brighter │
+        //│          │       XXXXXXXXXXXXXXXXXX       │          ││  Screen  │  Louder  │          │          │ Brighter │
             &none      &none      &none      &none      &none       SCREEN   &kp C_VOL_UP &none      &none    &kp C_BRI_UP
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │          ││          │  Quieter │          │          │ Dimmer   │
-           &bootloader &none      &none      &none      &none       &none    &kp C_VOL_DN &none      &none    &kp C_BRI_DN
+           &bootloader  &none      &none      &none      &none       &none    &kp C_VOL_DN &none      &none    &kp C_BRI_DN
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│PROFILE 0 │PROFILE 1 │PROFILE 2 │PROFILE 3 │ CLEAR BT ││  Record  │  Mute    │          │          │          │
             BT_0       BT_1       BT_2       BT_3      &bt BT_CLR   RECORD    &kp C_MUTE  &none      &none      &none
