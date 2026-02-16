@@ -131,7 +131,8 @@
             &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G       ││  M       │  N       │  E       │  I       │  O       │
-            &kp A    &mt LALT R  &mt LGUI S  MEH(T)     &kp G       &kp M      MEH(N)   &mt LGUI E  &mt LALT I  &kp O
+            // &kp A    &mt LALT R  &mt LGUI S  MEH(T)     &kp G       &kp M      MEH(N)   &mt LGUI E  &mt LALT I  &kp O
+            &kp A    &kp R  &kp S  &kp T     &kp G       &kp M      &kp N   &kp E  &kp I  &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  D       │  V       ││  K       │  H       │ ,        │  .       │  ENTER   │
             &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
