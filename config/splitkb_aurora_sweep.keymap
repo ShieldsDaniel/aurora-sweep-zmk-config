@@ -19,12 +19,14 @@
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
 #define SPC_RAISE &lt RAISE SPACE
-#define SHFT_LT &mt LSHFT LT
-#define ALT_LBKT &mt LALT LBKT
-#define GUI_LBRC &mt LGUI LBRC
-#define CTL_LPAR &mt LCTRL LPAR
+#define S_LT &mt LSHFT LT
+#define A_LBKT &mt LALT LBKT
+#define G_LBRC &mt LGUI LBRC
+#define C_LPAR &mt LCTRL LPAR
 #define BT_0 &bt BT_SEL 0
 #define BT_1 &bt BT_SEL 1
+#define BT_2 &bt BT_SEL 2
+#define BT_3 &bt BT_SEL 3
 
 / {
     macros {
@@ -182,7 +184,7 @@
             &none      &none      &none      &none      &none       &kp DOWN   &kp LEFT   &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ < (SHIFT)│  [ (ALT) │  { (GUI) │  ( (CTRL)│          ││          │  )       │  }       │  ]       │  >       │
-            SHFT_LT    ALT_LBKT   GUI_LBRC   CTL_LPAR   &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
+            S_LT       A_LBKT     G_LBRC     C_LPAR     &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          ││  UP      │  RIGHT   │          │          │          │
             &none      &none      &none      &none      &none       &kp UP     &kp RIGHT  &none      &none      &none
@@ -239,7 +241,7 @@
             &boot      &none      &none      &none      &none       &none    &kp C_VOL_DN &none      &none    &kp C_BRI_DN
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│PROFILE 0 │PROFILE 1 │PROFILE 2 │PROFILE 3 │ CLEAR BT ││  Record  │  Mute    │          │          │          │
-            BT_0       BT_1       BT_2       BT_3      &bt BT_CLR   RECORD    &kp N1      &none      &none      &none
+            BT_0       BT_1       BT_2       BT_3      &bt BT_CLR   RECORD    &kp C_MUTE  &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ Previous │  Stop    ││  Play    │  Next    │
                                             &kp C_PREV &kp C_STOP  &kp C_PP  &kp C_NEXT
