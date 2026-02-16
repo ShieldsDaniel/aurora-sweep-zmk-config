@@ -43,8 +43,8 @@
             // w + f + p
 
             key-positions = <1 2 3>;
-            layers = <BASE>;
-            bindings = <&mo MEDIA>;
+            layers = <0>;
+            bindings = <&mo 7>;
         };
 
         combo_esc {
@@ -53,7 +53,7 @@
             // w + f
 
             key-positions = <1 2>;
-            layers = <BASE>;
+            layers = <0>;
             bindings = <&kp ESC>;
         };
 
@@ -63,8 +63,8 @@
             // r + s
 
             key-positions = <11 12>;
-            layers = <BASE>;
-            bindings = <&mo NUM>;
+            layers = <0>;
+            bindings = <&mo 4>;
         };
 
         combo_tab {
@@ -73,7 +73,7 @@
             // u + y
 
             key-positions = <21 22>;
-            layers = <BASE>;
+            layers = <0>;
             bindings = <&kp TAB>;
         };
 
@@ -83,8 +83,8 @@
             // l + u + y
 
             key-positions = <6 7 8>;
-            layers = <BASE>;
-            bindings = <&mo FUNC>;
+            layers = <0>;
+            bindings = <&mo 6>;
         };
 
         combo_del {
@@ -93,7 +93,7 @@
             // u + y
 
             key-positions = <7 8>;
-            layers = <BASE>;
+            layers = <0>;
             bindings = <&kp DELETE>;
         };
 
@@ -103,8 +103,8 @@
             // , + .
 
             key-positions = <27 28>;
-            layers = <BASE>;
-            bindings = <&sl SHORTCUTS>;
+            layers = <0>;
+            bindings = <&sl 5>;
         };
     };
 
@@ -132,13 +132,15 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base_layer {
+        default_layer {
             bindings = <
-&kp Q      &kp W           &kp F           &kp P                   &kp B    &kp J  &kp L                   &kp U           &kp Y           &kp BSPC
-&kp A      &mt LEFT_ALT R  &mt LEFT_GUI S  &mt LC(LS(LEFT_ALT)) T  &kp G    &kp M  &mt LS(LC(LEFT_ALT)) N  &mt LEFT_GUI E  &mt LEFT_ALT I  &kp O
-&kp Z      &kp X           &kp C           &kp D                   &kp V    &kp K  &kp H                   &kp COMMA       &kp DOT         &kp ENTER
-&mo LOWER  &sk LCTRL                                                                                                       &skq LSHIFT     &lt RAISE SPACE
+&kp Q  &kp W           &kp F           &kp P                   &kp B    &kp J  &kp L                   &kp U           &kp Y           &kp BSPC
+&kp A  &mt LEFT_ALT R  &mt LEFT_GUI S  &mt LC(LS(LEFT_ALT)) T  &kp G    &kp M  &mt LS(LC(LEFT_ALT)) N  &mt LEFT_GUI E  &mt LEFT_ALT I  &kp O
+&kp Z  &kp X           &kp C           &kp D                   &kp V    &kp K  &kp H                   &kp COMMA       &kp DOT         &kp ENTER
+&mo 1  &sk LCTRL                                                                                                       &skq LSHIFT     &lt 2 SPACE
             >;
+
+            label = "BASE";
         };
 
         lower_layer {
@@ -146,17 +148,21 @@
 &none      &none      &kp LA(U)  &kp LA(S)  &none       &none      &none      &none     &kp DQT    &none
 &kp QMARK  &kp TILDE  &kp UNDER  &kp MINUS  &kp BSLH    &kp FSLH   &kp EQUAL  &kp PLUS  &kp SQT    &kp COLON
 &none      &none      &none      &none      &none       &fwrd_aro  &fat_aro   &none     &kp GRAVE  &none
-&none      &none                                                                        &kp BSPC   &mo ADJUST
+&none      &none                                                                        &kp BSPC   &mo 3
             >;
+
+            label = "LOWER";
         };
 
         raise_layer {
             bindings = <
-&none       &none      &none     &kp LA(LS(N2))  &none        &none      &none     &none     &none     &none
-&kp EXCL    &kp AT     &kp HASH  &kp DLLR        &kp PRCNT    &kp CARET  &kp AMPS  &kp PIPE  &kp STAR  &kp SEMI
-&none       &none      &none     &none           &none        &none      &none     &none     &none     &none
-&mo ADJUST  &kp ENTER                                                                        &none     &none
+&none     &none      &none     &kp LA(LS(N2))  &none        &none      &none     &none     &none     &none
+&kp EXCL  &kp AT     &kp HASH  &kp DLLR        &kp PRCNT    &kp CARET  &kp AMPS  &kp PIPE  &kp STAR  &kp SEMI
+&none     &none      &none     &none           &none        &none      &none     &none     &none     &none
+&mo 3     &kp ENTER                                                                        &none     &none
             >;
+
+            label = "RAISE";
         };
 
         adjust_layer {
@@ -166,6 +172,8 @@
 &none              &none              &none              &none           &none    &kp UP    &kp RIGHT  &none     &none     &none
 &none              &none                                                                                         &none     &none
             >;
+
+            label = "ADJUST";
         };
 
         number_layer {
@@ -175,6 +183,8 @@
 &none  &none  &none  &none  &none    &kp COMMA  &kp N1  &kp N2  &kp N3   &none
 &none  &none                                                    &kp DOT  &kp N0
             >;
+
+            label = "NUM";
         };
 
         shortcuts_layer {
@@ -184,6 +194,8 @@
 &kp LG(Z)  &kp LG(X)  &kp LG(C)  &none  &kp LG(V)    &none  &none  &none  &none  &none
 &none      &none                                                          &none  &none
             >;
+
+            label = "SHORTCUT";
         };
 
         function_layer {
@@ -193,6 +205,8 @@
 &kp F13  &kp F1  &kp F2  &kp F3  &kp F12    &none  &none  &none  &none  &none
 &none    &none                                                   &none  &none
             >;
+
+            label = "FUNC";
         };
 
         media_layer {
@@ -202,6 +216,8 @@
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR    &kp LG(LS(N5))  &kp C_MUTE    &none  &none     &none
 &kp C_PREV    &kp C_STOP                                                                                   &kp C_PP  &kp C_NEXT
             >;
+
+            label = "MEDIA";
         };
     };
 };
