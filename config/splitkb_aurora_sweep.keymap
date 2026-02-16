@@ -15,7 +15,17 @@
 #define MEDIA       7
 
 // Helper Constants
-#define MEH(kc) &hl LC(LS(LALT)) kc
+#define ALT_R &hml LALT R
+#define GUI_S &hml LGUI S
+#define MEH_T &hml LC(LS(LALT)) K
+#define MEH_N &hmr LC(LS(LALT)) N
+#define GUI_E &hmr LGUI E
+#define ALT_I &hmr LALT I
+// #define MEH(kc) &hl LC(LS(LALT)) kc
+#define S_LT &hml LSHFT LT
+#define A_LBKT &hml LALT LBKT
+#define G_LBRC &hml LGUI LBRC
+#define C_LPAR &hml LCTRL LPAR
 #define SCREEN &kp LG(LS(N4))
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
@@ -115,6 +125,30 @@
             release-after-ms = <1000>;
             quick-release;
         };
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MOD_LEFT";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <10 11 12 13>;
+            hold-trigger-on-release;
+        };
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW_MOD_RIGHT";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <14 15 16 17>;
+            hold-trigger-on-release;
+        };
     };
 
     keymap {
@@ -126,7 +160,7 @@
             &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G       ││  M       │  N       │  E       │  I       │  O       │
-           &kp A     &mt LALT R  &mt LGUI S  MEH(T)     &kp G       &kp M      MEH(N)   &mt LGUI E  &mt LALT I  &kp O
+           &kp A       ALT_R      GUI_S      MEH_T      &kp G       &kp M      MEH_N      GUI_E      ALT_I      &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  D       │  V       ││  K       │  H       │ ,        │  .       │  ENTER   │
             &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
@@ -176,11 +210,11 @@
         adjust_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  SHIFT   │  ALT     │   GUI    │  CTRL    │          ││  DOWN    │  LEFT    │          │          │          │
-            &kp LSHFT  &kp LALT   &kp LGUI   &kp LCTRL  &none       &kp DOWN   &kp LEFT   &none      &none      &none
+        //│          │          │          │          │          ││  DOWN    │  LEFT    │          │          │          │
+            &none      &none      &none      &none      &none       &kp DOWN   &kp LEFT   &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ <        │  [       │  {       │  (       │          ││          │  )       │  }       │  ]       │  >       │
-            &kp LT     &kp LBKT   &kp LBRC   &kp LPAR   &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
+            S_LT       A_LBKT     G_LBRC     C_LPAR     &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          ││  UP      │  RIGHT   │          │          │          │
             &none      &none      &none      &none      &none       &kp UP     &kp RIGHT  &none      &none      &none
