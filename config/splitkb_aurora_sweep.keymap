@@ -19,7 +19,6 @@
 #define SCREEN &kp LG(LS(N4))
 #define RECORD &kp LG(LS(N5))
 #define EURO &kp LA(LS(N2))
-#define SPC_RAISE &lt RAISE SPACE
 #define S_LT &mt LSHFT LT
 #define A_LBKT &mt LALT LBKT
 #define G_LBRC &mt LGUI LBRC
@@ -138,7 +137,7 @@
             &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │ LOWER    │ OSM CTLR    OSM SHIFT│SPC(RAISE)│
-                                             &mo LOWER  &sk LCTRL  &skq LSHIFT SPC_RAISE
+                                            &mo LOWER  &sk LCTRL  &skq LSHIFT  &lt RAISE SPACE
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
