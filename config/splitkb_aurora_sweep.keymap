@@ -5,13 +5,14 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Layers
-#define BASE     0
-#define LOWER    1
-#define RAISE    2
-#define ADJUST   3
-#define NUM      4
-#define FUNC     5
-#define MEDIA    6
+#define BASE        0
+#define LOWER       1
+#define RAISE       2
+#define ADJUST      3
+#define NUM         4
+#define SHORTCUTS   5
+#define FUNC        6
+#define MEDIA       7
 
 // Helper Constants
 #define MEH(kc) &hl LC(LS(LALT)) kc
@@ -98,7 +99,7 @@
             // , + .
             key-positions = <27 28>;
             layers = <BASE>;
-            bindings = <&sk LGUI>;
+            bindings = <&sl SHORTCUTS>;
         };
     };
     behaviors {
@@ -201,7 +202,7 @@
         //│          │          │          │          │          ││          │  7       │  8       │  9       │          │
             &none      &none      &none      &none      &none       &none      &kp N7     &kp N8     &kp N9     &none 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          ││          │  4       │  5       │  6       │          │
+        //│          │      XXXXXXXXX      │          │          ││          │  4       │  5       │  6       │          │
             &none      &none      &none      &none      &none       &none      &kp N4     &kp N5     &kp N6     &none 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          ││  ,       │  1       │  2       │  3       │          │
@@ -209,6 +210,24 @@
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │          │          ││  .       │  0       │
                                              &none      &none       &kp DOT    &kp N0
+        //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
+            >;
+        };
+
+        shortcuts_layer {
+            bindings = < 
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │          │  SEARCH  │          │          ││          │          │          │          │          │
+            &none      &none      &kp LG(F)  &none      &none       &none      &none      &none      &none      &none 
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│SELECT ALL│  RELOAD  │  SAVE    │          │          ││          │          │          │          │          │
+            &kp LG(A)  &kp LG(R)  &kp LG(S)  &none      &none       &none      &none      &none      &none      &none 
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  UNDO    │  CUT     │  COPY    │          │  PASTE   ││          │          │       XXXXXXX       │          │
+            &kp LG(Z)  &kp LG(X)  &kp LG(C)  &none      &kp LG(V)    &none      &none      &none      &none      &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┴──────────┴──────────╯
+        //                                 │          │          ││          │          │
+                                             &none      &none       &none      &none
         //                                 ╰──────────┴──────────╯╰──────────┴──────────╯
             >;
         };
