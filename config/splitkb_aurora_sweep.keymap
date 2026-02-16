@@ -124,14 +124,14 @@
 
     keymap {
         compatible = "zmk,keymap";
-        default_layer {
+        base_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  F       │  P       │  B       ││  J       │  L       │  U       │  Y       │ BACKSPACE│
             &kp Q      &kp W      &kp F      &kp P      &kp B       &kp J      &kp L      &kp U      &kp Y      &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  R       │  S       │  T       │  G       ││  M       │  N       │  E       │  I       │  O       │
-            &kp A     &mt LALT R &mt LGUI S  MEH(T)     &kp G       &kp M      MEH(N)    &mt LGUI E &mt LALT I  &kp O
+            &kp A    &mt LALT R  &mt LGUI S  MEH(T)     &kp G       &kp M      MEH(N)   &mt LGUI E  &mt LALT I  &kp O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  D       │  V       ││  K       │  H       │ ,        │  .       │  ENTER   │
             &kp Z      &kp X      &kp C      &kp D      &kp V       &kp K      &kp H      &kp COMMA  &kp DOT   &kp ENTER
@@ -185,7 +185,8 @@
             &none      &none      &none      &none      &none       &kp DOWN   &kp LEFT   &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│ < (SHIFT)│  [ (ALT) │  { (GUI) │  ( (CTRL)│          ││          │  )       │  }       │  ]       │  >       │
-            S_LT       A_LBKT     G_LBRC     C_LPAR     &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
+            // S_LT       A_LBKT     G_LBRC     C_LPAR
+            &none       &none     &none      &none      &none       &none      &kp RPAR   &kp RBRC   &kp RBKT   &kp GT
         //├──────────┼──────────┼──────────┼──────────┼──────────┤├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          ││  UP      │  RIGHT   │          │          │          │
             &none      &none      &none      &none      &none       &kp UP     &kp RIGHT  &none      &none      &none
