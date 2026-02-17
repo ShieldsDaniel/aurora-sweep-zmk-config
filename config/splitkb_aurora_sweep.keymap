@@ -17,8 +17,8 @@
 // Helper Constants
 #define ALT_R &hml LALT R
 #define GUI_S &hml LGUI S
-#define MEH_T &hml LC(LS(LALT)) T
-#define MEH_N &hmr LC(LS(LALT)) N
+#define MEH_T &hl LC(LS(LALT)) T
+#define MEH_N &hl LC(LS(LALT)) N
 #define GUI_E &hmr LGUI E
 #define ALT_I &hmr LALT I
 // #define MEH(kc) &hl LC(LS(LALT)) kc
